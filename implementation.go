@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/LishchukI/Architecture1/stack"
+	"github.com/KPI-Labs/design-lab-1/stack"
 )
 
 func isOperator(str string) bool {
