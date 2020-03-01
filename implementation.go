@@ -2,9 +2,10 @@ package lab1
 
 import (
 	"fmt"
-	"strings"
 	"strconv"
-	"./stack"
+	"strings"
+
+	"github.com/LishchukI/Architecture1/stack"
 )
 
 func isOperator(str string) bool {
@@ -32,12 +33,13 @@ func isValidNumber(str string) bool {
 	return true
 }
 
+// PrefixToInfix comment
 func PrefixToInfix(input string) (string, error) {
 	prefixExp := strings.Fields(input)
 	s := stack.NewStack()
 	length := len(prefixExp)
 
-	for i := length-1; i >= 0; i-- {
+	for i := length - 1; i >= 0; i-- {
 		symbol := prefixExp[i]
 
 		switch {
@@ -47,7 +49,7 @@ func PrefixToInfix(input string) (string, error) {
 			operand2Raw, err := s.Pop()
 
 			if err != nil {
-				return "", fmt.Errorf("Invalid postfix expression")
+				return "", fmt.Errorf("Invalid prefix expression")
 			}
 
 			operand1, _ := operand1Raw.(string)
@@ -61,18 +63,17 @@ func PrefixToInfix(input string) (string, error) {
 			s.Push(symbol)
 
 		default:
-			return "", fmt.Errorf("Invalid symbol in postfix expression")
+			return "", fmt.Errorf("Invalid symbol in prefix expression")
 		}
 	}
 
 	infixExpRaw, err := s.Pop()
 
-	if err != nil ||  s.Size() != 0 {
-		return "", fmt.Errorf("Invalid postfix expression")
+	if err != nil || s.Size() != 0 {
+		return "", fmt.Errorf("Invalid prefix expression")
 	}
 
 	infixExp, _ := infixExpRaw.(string)
 
 	return infixExp, nil
 }
-

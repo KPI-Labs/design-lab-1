@@ -11,11 +11,11 @@ type Element struct {
 
 type Stack struct {
 	size int
-	top *Element
+	top  *Element
 }
 
 func NewStack() Stack {
-	return Stack{ size: 0 }
+	return Stack{size: 0}
 }
 
 func (s *Stack) Size() int {
@@ -28,7 +28,7 @@ func (s *Stack) Push(data interface{}) {
 	s.size++
 }
 
-func (s *Stack) Pop() (interface{}, error){
+func (s *Stack) Pop() (interface{}, error) {
 	elem := s.top
 	if elem != nil {
 		s.size--
@@ -37,4 +37,3 @@ func (s *Stack) Pop() (interface{}, error){
 	}
 	return nil, fmt.Errorf("Removing item from empty stack")
 }
-
