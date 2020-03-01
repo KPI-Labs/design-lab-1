@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	lab1 "github.com/LishchukI/Architecture1"
+	lab1 "github.com/KPI-Labs/design-lab-1"
 )
 
 func main() {
